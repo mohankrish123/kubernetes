@@ -38,5 +38,5 @@ URL: https://docs.nginx.com/nginx-ingress-controller/installation/installation-w
 # To generate the token with the join command
 kubeadm token create --print-join-command
 
-# Kubernetes Documentation
+# Kubernetes Provider Documentation
 URL: https://kubernetes.io/docs/
