@@ -25,7 +25,7 @@ To start using your cluster, you need to run the following as a regular user:
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config \
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-# Then you can join any number of worker nodes by running the following on each as root:
+# Then you can join any number of worker nodes by running the following on each node as root:
 
 kubeadm join xxxxxxxxxxx:6443 --token jdifvr.1x7puhpsxmo7haq7 --discovery-token-ca-cert-hash sha256:5871043f7b1e906f4ea5985e4d92291ace4b226b8ee81c7640d72b83cab69009
 
