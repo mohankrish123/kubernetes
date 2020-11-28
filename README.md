@@ -12,7 +12,7 @@ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/
 sudo apt-get update \
 sudo apt-get install -y kubelet kubeadm kubernetes-cni socat kubectl
 
-# Ignore this one for worker nodes.
+# Ignore this one for the worker nodes.
 sudo kubeadm init --ignore-preflight-errors=NumCPU
 
 OUTPUT:
