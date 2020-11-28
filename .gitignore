@@ -1,0 +1,15 @@
+/.Xauthority
+/.bash_logout
+/.bash_history
+/.bashrc
+/.cache/
+/.config/
+/.profile
+/.sudo_as_admin_successful
+/.ssh/
+/.viminfo
+/.viminfz.tmp
+/.viminfo.tmp
+/.wget-hsts
+/.docker
+/.kube

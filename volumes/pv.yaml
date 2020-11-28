@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-container
+  labels:
+    type: ssd
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+    #awsElasticBlockStore:
+    #volumeID: vol-07190b79b6184ba56
+    #fsType: xfs
+  hostPath:
+     path: /volume
+

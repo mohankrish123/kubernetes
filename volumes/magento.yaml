@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: magento
+spec:
+  volumes:
+  - name: cloud-storage
+    persistentVolumeClaim:
+      claimName: pvc-container
+  containers:
+  - name: magento
+    image: mohankrish3/npm:latest
+    volumeMounts:
+    - name: cloud-storage
+      mountPath: /var/www/html
