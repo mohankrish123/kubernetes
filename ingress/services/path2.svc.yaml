@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: path2-svc
+  namespace: ingress
+spec:
+  selector: 
+    app: path2
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
+

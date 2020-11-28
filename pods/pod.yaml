@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: newnginx
+  namespace: ingress
+  labels:
+    app: nginxlabel
+spec:
+  containers: 
+    - name: nginx
+      image: customimage
+      ports:
+      - containerPort: 80
+
