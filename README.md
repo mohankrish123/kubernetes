@@ -32,5 +32,11 @@ kubeadm join xxxxxxxxxxx:6443 --token jdifvr.1x7puhpsxmo7haq7 --discovery-token-
 # Initialize weave network
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 
-# To generate the SHA with 32 bytes
+# To initiallize ingress controller
+URL: https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/
+
+# To generate the token with join command
 kubeadm token create --print-join-command
+
+# Kubernetes Documentation
+URL: https://kubernetes.io/docs/
