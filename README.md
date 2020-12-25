@@ -34,6 +34,7 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 
 # To initiallize ingress controller
 URL: https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/
+Ingress class is really important while installation. Ingress objects should follow the ingress class installed.
 
 # To generate the token with join command
 kubeadm token create --print-join-command
