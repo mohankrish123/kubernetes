@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpdefaultbackendingress
+  namespace: elasticsearch
+spec:
+  selector:
+    app: certs-elasticsearch1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: certs-elasticsearch1-svc
+  namespace: elasticsearch
+spec:
+  selector: 
+    app: certs-elasticsearch1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: certs-elasticsearch1-ingress
+  namespace: elasticsearch
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  defaultBackend:
+    service:
+      name: httpdefaultbackendingress
+      port:
+        number: 80
+  rules:
+  - host: "elasticsearch1.mohank.tk"
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: certs-elasticsearch1-svc
+            port:
+              number: 80
+---              
+apiVersion: v1
+kind: Pod
+metadata:
+  name: certs-elasticsearch1
+  namespace: elasticsearch
+  labels:
+    app: certs-elasticsearch1
+spec:
+  containers:
+    - name: domainhelper80
+      image: mohankrish3/nginxcertbot
+      ports:
+      - containerPort: 80
+      volumeMounts:
+      - name: certs
+        mountPath: /etc/letsencrypt/
+      command: ["bash", "-c", "nginx -g 'daemon off;'"]
+  volumes:
+    - name: certs
+      hostPath:
+        path: /home/ubuntu/certs
+        type: Directory
