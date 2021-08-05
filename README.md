@@ -2,7 +2,7 @@
 sudo apt install apt-transport-https ca-certificates curl software-properties-common \
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - \
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" \
-sudo apt update \
+sudo apt update 
 ### For the installation of kubernetes version 1.19.00, docker version that is compatible is 19.03.
 sudo apt-cache policy docker-ce | grep 19 \
 sudo apt-cache policy docker-ce-cli | grep 19 \
@@ -15,10 +15,10 @@ sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2 \
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - \
 sudo chmod 777 /etc/apt/sources.list.d/ \
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list \
-sudo apt-get update \   
+sudo apt-get update    
 ### Stop swap if the VM has any   
-sudo swapoff -a  \  
-sudo sed -i '/ swap / s/^/#/' /etc/fstab  \
+sudo swapoff -a    
+sudo sed -i '/ swap / s/^/#/' /etc/fstab  
 
 ### One minor version of kubelet is allowed.   
 sudo apt-get install -y kubelet=1.18.0-00 kubeadm=1.19.0-00 kubernetes-cni socat kubectl=1.19.0-00
