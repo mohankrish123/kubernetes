@@ -3,16 +3,28 @@ sudo apt install apt-transport-https ca-certificates curl software-properties-co
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - \
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" \
 sudo apt update \
-sudo apt install docker-ce docker-compose \
-systemctl status docker \
+### For the installation of kubernetes version 1.19.00, docker version that is compatible is 19.03.
+sudo apt-cache policy docker-ce | grep 19 \
+sudo apt-cache policy docker-ce-cli | grep 19 \
+sudo apt install -y docker-ce=5:19.03.15~3-0~ubuntu-bionic docker-ce-cli=5:19.03.15~3-0~ubuntu-bionic \
+sudo apt-mark hold docker-ce docker-ce-cli \
+sudo apt install docker-compose -y \
+sudo apt-mark unhold docker-ce docker-ce-cli \
+sudo systemctl status docker \
 sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2 \
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - \
 sudo chmod 777 /etc/apt/sources.list.d/ \
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list \
-sudo apt-get update \
-sudo apt-get install -y kubelet kubeadm kubernetes-cni socat kubectl
+sudo apt-get update \   
+### Stop swap if the VM has any   
+sudo swapoff -a  \  
+sudo sed -i '/ swap / s/^/#/' /etc/fstab  \
 
-# Ignore this one for worker nodes.
+### One minor version of kubelet is allowed.   
+sudo apt-get install -y kubelet=1.18.0-00 kubeadm=1.19.0-00 kubernetes-cni socat kubectl=1.19.0-00
+
+## Ignore this one for worker nodes and check if the swap is disabled or not.
+cat /proc/meminfo | grep -i swap     
 sudo kubeadm init --ignore-preflight-errors=NumCPU
 
 OUTPUT:
