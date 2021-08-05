@@ -19,6 +19,7 @@ sudo apt-get update
 ### Stop swap if the VM has any   
 sudo swapoff -a    
 sudo sed -i '/ swap / s/^/#/' /etc/fstab  
+Comment out the line in the /etc/fstab      
 
 ### One minor version of kubelet is allowed.   
 sudo apt-get install -y kubelet=1.18.0-00 kubeadm=1.19.0-00 kubernetes-cni socat kubectl=1.19.0-00
