@@ -6,7 +6,7 @@ sudo apt update \
 ### For the installation of kubernetes version 1.19.00, docker version that is compatible is 19.03.
 sudo apt-cache policy docker-ce | grep 19 \
 sudo apt-cache policy docker-ce-cli | grep 19 \
-sudo apt install -y docker-ce=5:19.03.15~3-0~ubuntu-bionic docker-ce-cli=5:19.03.15~3-0~ubuntu-bionic \
+sudo apt install -y docker-ce=5:19.03.15\~3-0\~ubuntu-bionic docker-ce-cli=5:19.03.15\~3-0\~ubuntu-bionic \
 sudo apt-mark hold docker-ce docker-ce-cli \
 sudo apt install docker-compose -y \
 sudo apt-mark unhold docker-ce docker-ce-cli \
